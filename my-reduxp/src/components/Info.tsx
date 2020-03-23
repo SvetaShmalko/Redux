@@ -1,7 +1,17 @@
 import React from 'react'
 
-export const Info: React.FC = () => {
-    return(
-        <div></div>
+interface Props {
+
+    name: string;
+
+}
+
+export const Info = () => {
+    return (
+        <div>
+            <ul className="list-group">
+                <li className="list-group-item"> Name: </li>)
+            </ul>
+        </div>
     )
 }
