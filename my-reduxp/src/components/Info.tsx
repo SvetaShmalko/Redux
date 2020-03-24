@@ -1,17 +1,33 @@
 import React from 'react'
+import { InfoState } from '../redux/infoReducer';
+import { connect } from 'react-redux'
 
-interface Props {
-
+export interface InfoProps {
     name: string;
-
 }
 
-export const Info = () => {
-    return (
-        <div>
-            <ul className="list-group">
-                <li className="list-group-item"> Name: </li>)
-            </ul>
-        </div>
-    )
+interface State {
+    arrInfo: InfoProps[];
 }
+
+interface ConnectedProps {
+    arrInfo: InfoProps[];
+}
+
+export class Info extends React.Component<InfoProps>{
+
+    render() {
+
+        return (
+            <div>
+
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = (state: { infoReducer: InfoState }): ConnectedProps => ({
+    arrInfo: state.infoReducer.arrInfo
+});
+
+export default connect(mapStateToProps)(Info);

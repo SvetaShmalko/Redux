@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { createInfo } from '../redux/actions';
 
 export interface InputForm {
     name: string
@@ -16,13 +18,13 @@ export class RegForm extends React.Component<{}, InputForm>{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event: any) {
+    handleChange(event: React.ChangeEvent<HTMLInputElement> ) {
         this.setState({ name: event.target.value },
             () => console.log(this.state)
         );
     }
 
-    handleSubmit(event: any) {
+    handleSubmit(event: React.FormEvent) {
         event.preventDefault();
 
         console.log('Отправленное имя: ' + this.state.name);
@@ -53,3 +55,9 @@ export class RegForm extends React.Component<{}, InputForm>{
         )
     }
 }
+
+const mapDispatchToProps = {
+    createInfo
+}
+
+export default connect(() => ({}), mapDispatchToProps)(RegForm)
