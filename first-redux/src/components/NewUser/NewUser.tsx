@@ -24,7 +24,16 @@ export const initialState: State = {
 class NewUser extends Component<ComponentProps, State> {
     public state: State = initialState;
 
+    handleChange(event: React.ChangeEvent<HTMLInputElement> ) {
+       
+    }
 
+    handleSubmit(event: React.FormEvent) {
+        event.preventDefault();
+
+       this.props.createNewResourse({name: "sveta", age: 26})
+    }
+    
     
 
     render() {
@@ -32,11 +41,28 @@ class NewUser extends Component<ComponentProps, State> {
         console.log(this.props)
 
         return (
-            <div>
-               <input type="text"/>
-            </div>
+            <form
+            onSubmit={(event) => this.handleSubmit(event)}
+        >
+            <label>Enter Your name</label>
+
+            <input type="text"
+                className="form-control"
+                value={this.state.name}
+                id="validationDefault01"
+                placeholder="name"
+                required
+                onChange={this.handleChange}
+            />
+
+            <input className="btn btn-success"
+                type="submit"
+                value="Submit"
+            />
+        </form>
         )
     }
+    
 }
 
 const mapStateToProps = (state: { userReducer: UserState }): ConnectedProps => ({
