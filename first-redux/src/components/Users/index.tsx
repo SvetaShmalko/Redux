@@ -1,8 +1,9 @@
 import React from 'react';
-import { UserItemProps } from "../NewUser";
 import { Component } from "react";
 import { UserState } from '../../store/reducers/userReducer';
 import { connect } from "react-redux";
+import { User, UserItemProps } from '../User';
+
 
 interface State {
     users: UserItemProps[];
@@ -16,13 +17,15 @@ interface ConnectedProps {
   
   export class Users extends Component<ConnectedProps> {
 
-    private renderUsers = (): JSX.Element[] =>
+    private renderUsers = (): JSX.Element[] => 
       this.props.users.map(user => (
-            <div key={user.name}>
-                Name: {user.name}
-                <br/>
-                Age: {user.age}
-            </div>
+        <User name={user.name} age={user.age}/>
+            // <div>
+            //   <User ={user} />
+            //     {/* Name: {user.name}
+            //     <br/>
+            //     Age: {user.age} */}
+            // </div>
         ))
 
       render() {

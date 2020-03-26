@@ -1,5 +1,5 @@
 import { CREATE_USER } from "../../constants/userAction";
-import { UserItemProps } from "../../components/NewUser";
+import { UserItemProps } from "../../components/User";
 
 
 interface CreateUserAction {

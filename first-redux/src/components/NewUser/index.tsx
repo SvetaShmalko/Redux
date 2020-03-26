@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 import { UserState } from "../../store/reducers/userReducer";
 import { Dispatch } from "../../store";
 import { createUser } from "../../store/actions";
+import { UserItemProps } from "../User";
 
-export interface UserItemProps {
-    name: string;
-    age: number
-}
 
 export interface State {
     name: string;
@@ -46,7 +43,7 @@ class NewUser extends Component<ComponentProps, State> {
         console.log('Props:', this.props);
 
         this.props.createNewResourse({ name: this.state.name, age: this.state.age });
-        //  this.setState(initialState);
+      //  this.setState(initialState);
         console.log('Props:', this.props);
     }
 
@@ -60,6 +57,7 @@ class NewUser extends Component<ComponentProps, State> {
                 <form onSubmit={this.handleSubmit}>
                     <label>Enter your name</label>
                     <div>
+
                         <input type="text"
                             className="form-control"
                             value={name}
@@ -74,7 +72,7 @@ class NewUser extends Component<ComponentProps, State> {
                     <div>
                         <input type="number"
                             className="form-control"
-                            value={age}
+                          //  value={age}
                             id="validationDefault02"
                             placeholder="Age"
                             required
