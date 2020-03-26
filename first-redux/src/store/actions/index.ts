@@ -1,5 +1,6 @@
 import { CREATE_USER } from "../../constants/userAction";
-import { UserItemProps } from "../reducers/userReducer";
+import { UserItemProps } from "../../components/NewUser";
+
 
 interface CreateUserAction {
     type: typeof CREATE_USER,

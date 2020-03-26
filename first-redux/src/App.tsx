@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import NewUser from './components/NewUser/NewUser';
+import NewUser from './components/NewUser';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
 
         <div className="col-md-auto">
           Здесь будет введенная инфа
-         
+        
           </div>
       </div>
     </div>

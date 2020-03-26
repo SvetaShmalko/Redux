@@ -1,10 +1,8 @@
 import { UserActions } from "../actions";
 import { CREATE_USER } from "../../constants/userAction";
+import { UserItemProps } from "../../components/NewUser";
 
-export interface UserItemProps { //UserItemProps вынести в компонент
-    name: string;
-    age: number
-}
+
 
 export interface UserState {
     users: UserItemProps[]
