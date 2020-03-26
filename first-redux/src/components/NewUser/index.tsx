@@ -22,7 +22,7 @@ interface ConnectedProps {
 type ComponentProps = ConnectedProps & ReturnType<typeof mapDispatchToProps>;
 
 export const initialState: State = {
-    name: 'Sveta',
+    name: '',
     age: 26
 };
 
@@ -31,7 +31,7 @@ class NewUser extends Component<ComponentProps, State> {
 
     _onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({ name: e.currentTarget.value });
-        console.log(this.state.name);  
+        console.log(this.state.name);
     }
 
     _onAgeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,9 +44,9 @@ class NewUser extends Component<ComponentProps, State> {
         e.preventDefault();
         console.log('State:', this.state);
         console.log('Props:', this.props);
-        
-        this.props.createNewResourse({name: this.state.name, age: this.state.age});
-        this.setState(initialState);
+
+        this.props.createNewResourse({ name: this.state.name, age: this.state.age });
+        //  this.setState(initialState);
         console.log('Props:', this.props);
     }
 
@@ -57,29 +57,37 @@ class NewUser extends Component<ComponentProps, State> {
 
         return (
             <div id='login' >
-                <form>
+                <form onSubmit={this.handleSubmit}>
+                    <label>Enter your name</label>
                     <div>
-                        <input
-                            placeholder='Username'
-                            type="text"
-                            name='name'
+                        <input type="text"
+                            className="form-control"
                             value={name}
+                            id="validationDefault01"
+                            placeholder="Username"
+                            required
                             onChange={this._onNameChange}
                         />
                     </div>
+
+                    <label>Enter your age</label>
                     <div>
-                        <input
-                            placeholder='Age'
-                            type="number"
-                            name='age'
+                        <input type="number"
+                            className="form-control"
                             value={age}
+                            id="validationDefault02"
+                            placeholder="Age"
+                            required
                             onChange={this._onAgeChange}
                         />
                     </div>
-                    <button type="submit" onClick={this.handleSubmit} >
-                        Submit
-                        </button>
+
+                    <input className="btn btn-success"
+                        type="submit"
+                        value="Submit" />
+
                 </form>
+
             </div>
         )
     }
