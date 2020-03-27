@@ -15,17 +15,11 @@ interface ConnectedProps {
   
   type ComponentProps = ConnectedProps;
   
-  export class Users extends Component<ConnectedProps> {
+  export class Users extends Component<ConnectedProps, State> {
 
     private renderUsers = (): JSX.Element[] => 
       this.props.users.map(user => (
         <User name={user.name} age={user.age}/>
-            // <div>
-            //   <User ={user} />
-            //     {/* Name: {user.name}
-            //     <br/>
-            //     Age: {user.age} */}
-            // </div>
         ))
 
       render() {

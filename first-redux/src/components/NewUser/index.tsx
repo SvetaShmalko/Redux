@@ -6,12 +6,13 @@ import { createUser } from "../../store/actions";
 import { UserItemProps } from "../User";
 
 
+
 export interface State {
     name: string;
     age: number
 }
 
-interface ConnectedProps {
+export interface ConnectedProps {
     users: UserItemProps[]
 
 }
@@ -40,10 +41,9 @@ class NewUser extends Component<ComponentProps, State> {
     handleSubmit = (e: React.FormEvent<EventTarget>) => {
         e.preventDefault();
         console.log('State:', this.state);
-        console.log('Props:', this.props);
-
-        this.props.createNewResourse({ name: this.state.name, age: this.state.age });
-      //  this.setState(initialState);
+        const res = { name: this.state.name, age: this.state.age }
+        this.props.createNewResourse(res);
+        this.setState(initialState);
         console.log('Props:', this.props);
     }
 
@@ -72,7 +72,7 @@ class NewUser extends Component<ComponentProps, State> {
                     <div>
                         <input type="number"
                             className="form-control"
-                          //  value={age}
+                           // value={age}
                             id="validationDefault02"
                             placeholder="Age"
                             required
@@ -100,4 +100,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     createNewResourse: (p: UserItemProps) => dispatch(createUser(p))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewUser)
+export default connect(mapStateToProps,mapDispatchToProps)(NewUser)
