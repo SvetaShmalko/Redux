@@ -19,7 +19,7 @@ interface ConnectedProps {
 
     private renderUsers = (): JSX.Element[] => 
       this.props.users.map(user => (
-        <User name={user.name} age={user.age}/>
+        <User key={user.name} name={user.name} age={user.age}/>
         ))
 
       render() {
