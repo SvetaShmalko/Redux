@@ -38,13 +38,36 @@ class NewUser extends Component<ComponentProps, State> {
     }
 
 
-    handleSubmit = (e: React.FormEvent<EventTarget>) => {
+    handleSubmit = async (e: React.FormEvent<EventTarget>) => {
+        const { name, age } = this.state;
         e.preventDefault();
-        console.log('State:', this.state);
-        const res = { name: this.state.name, age: this.state.age }
-        this.props.createNewResourse(res);
-        this.setState(initialState);
-        console.log('Props:', this.props);
+    //     console.log('State:', this.state);
+    //     const res = { name: this.state.name, age: this.state.age }
+    //   //  this.props.createNewResourse(res);
+    //     this.setState(initialState);
+    //     console.log('Props:', this.props);
+
+        try {
+            const resp = await fetch("https://reqres.in/api/users", {
+              method: "POST",
+              body: JSON.stringify({
+                name,
+                age,
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8"
+              }
+            }).then(res => {
+              this.setState(initialState);
+              return res.json();
+            });
+    
+            this.props.createNewResourse(resp);
+          } catch (error) {
+            this.setState(initialState);
+            alert("An error occured");
+          }
+    
     }
 
 
@@ -100,4 +123,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     createNewResourse: (p: UserItemProps) => dispatch(createUser(p))
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(NewUser)
+export default connect((mapStateToProps),mapDispatchToProps)(NewUser)

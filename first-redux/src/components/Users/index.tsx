@@ -17,12 +17,31 @@ interface ConnectedProps {
   
   export class Users extends Component<ConnectedProps, State> {
 
+ componentDidMount = async () => {
+      try {
+        const resp: ConnectedProps = await fetch("https://my-json-server.typicode.com/SvetaShmalko/json-server/users")
+        .then(res => {
+        return res.json();
+       });
+       console.log(resp);
+       this.setState((resp) => {
+        
+       });
+      } catch (error) {
+
+        alert("An error occured");
+      }
+      
+    };
+    
+
     private renderUsers = (): JSX.Element[] => 
       this.props.users.map(user => (
         <User key={user.name} name={user.name} age={user.age}/>
-        ))
+        ));
 
       render() {
+        // this.getUsers();
         return this.props.users.length > 0 ? (
         <div> {this.renderUsers()} </div>
           ) : (
