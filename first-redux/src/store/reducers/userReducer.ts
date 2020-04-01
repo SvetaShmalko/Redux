@@ -11,7 +11,7 @@ export interface UserState {
 
 
 const initialState = {
-    users: 
+    users: []
 };
 
 const resp = async() => {
